@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using UIKit;
 
+using Facebook.CoreKit;
+
 namespace FeedReader
 {
     // The UIApplicationDelegate for the application. This class is responsible for launching the
@@ -9,6 +11,8 @@ namespace FeedReader
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
+        private string appId = "1534327030231289";
+        private string appName = "FeedReader";
 
         public override UIWindow Window
         {
@@ -18,20 +22,27 @@ namespace FeedReader
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            // facebook login
+            Profile.EnableUpdatesOnAccessTokenChange(true);
+            Settings.AppID = appId;
+            Settings.DisplayName = appName;
+
             // create a new window instance based on the screen size
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             // If you have defined a root view controller, set it here:
+
+            var loginViewController = new LoginViewController();
             
             var rootViewController = new RootViewController();
             var navigationController = new UINavigationController(rootViewController);
 
-            Window.RootViewController = navigationController;
+            Window.RootViewController = loginViewController;
 
             // make the window visible
             Window.MakeKeyAndVisible();
 
-            return true;
+            return ApplicationDelegate.SharedInstance.FinishedLaunching(application, launchOptions);
         }
 
         public override void OnResignActivation(UIApplication application)
@@ -64,7 +75,11 @@ namespace FeedReader
         {
             // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
         }
+
+        public override bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            // We need to handle URLs by passing them to their own OpenUrl in order to make the SSO authentication works.
+            return ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+        }
     }
 }
-
-
