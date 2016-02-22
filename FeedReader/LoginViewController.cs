@@ -54,6 +54,7 @@ namespace FeedReader
                     AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, e.Result.Token.TokenString);
                     Console.WriteLine(e.Result.Token.TokenString);
                     Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
+                    this.DismissViewController(true, () => {});
                 }
             };
 
