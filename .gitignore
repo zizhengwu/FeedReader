@@ -292,3 +292,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+## Xamarin ###
+Components/

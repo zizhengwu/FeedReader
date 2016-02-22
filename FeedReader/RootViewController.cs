@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using Amazon;
 using Amazon.CognitoIdentity;
+using Amazon.Util;
 using CoreGraphics;
 using UIKit;
 
@@ -31,6 +32,19 @@ namespace FeedReader
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            // handle login
+            //AmazonUtils.ClearCredentials();
+            if (AmazonUtils.Credentials.GetCachedIdentityId() == null)
+            {
+                var loginViewController = new LoginViewController();
+                this.NavigationController.PushViewController(loginViewController, true);
+            }
+            else
+            {
+                Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
+            }
+            
 
             Title = "Rss Feeds";
 
@@ -116,3 +130,4 @@ namespace FeedReader
         }
     }
 }
+

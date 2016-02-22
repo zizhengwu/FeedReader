@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Amazon;
+using Foundation;
 using UIKit;
 
 using Facebook.CoreKit;
@@ -11,8 +12,6 @@ namespace FeedReader
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
-        private string appId = "1534327030231289";
-        private string appName = "FeedReader";
 
         public override UIWindow Window
         {
@@ -22,22 +21,21 @@ namespace FeedReader
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+
             // facebook login
             Profile.EnableUpdatesOnAccessTokenChange(true);
-            Settings.AppID = appId;
-            Settings.DisplayName = appName;
+            Settings.AppID = Constants.appId;
+            Settings.DisplayName = Constants.appName;
 
             // create a new window instance based on the screen size
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
             // If you have defined a root view controller, set it here:
 
-            var loginViewController = new LoginViewController();
-            
             var rootViewController = new RootViewController();
             var navigationController = new UINavigationController(rootViewController);
 
-            Window.RootViewController = loginViewController;
+            Window.RootViewController = navigationController;
 
             // make the window visible
             Window.MakeKeyAndVisible();
