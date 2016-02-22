@@ -1,4 +1,5 @@
-﻿using Amazon;
+﻿using System;
+using Amazon;
 using Foundation;
 using UIKit;
 
@@ -12,6 +13,7 @@ namespace FeedReader
     public class AppDelegate : UIApplicationDelegate
     {
         // class-level declarations
+        public static bool IsUserLoggedIn { get; set; }
 
         public override UIWindow Window
         {
@@ -26,6 +28,10 @@ namespace FeedReader
             Profile.EnableUpdatesOnAccessTokenChange(true);
             Settings.AppID = Constants.appId;
             Settings.DisplayName = Constants.appName;
+
+            // handle login
+            AmazonUtils.ClearCredentials();
+            IsUserLoggedIn = (!String.IsNullOrEmpty(AmazonUtils.Credentials.GetCachedIdentityId()));
 
             // create a new window instance based on the screen size
             Window = new UIWindow(UIScreen.MainScreen.Bounds);

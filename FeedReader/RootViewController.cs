@@ -34,17 +34,15 @@ namespace FeedReader
             base.ViewDidLoad();
 
             // handle login
-            //AmazonUtils.ClearCredentials();
-            if (AmazonUtils.Credentials.GetCachedIdentityId() == null)
+            if (!AppDelegate.IsUserLoggedIn)
             {
                 var loginViewController = new LoginViewController();
-                this.NavigationController.PushViewController(loginViewController, true);
+                this.NavigationController.PresentViewController(loginViewController, false, () => {});
             }
             else
             {
                 Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
             }
-            
 
             Title = "Rss Feeds";
 
