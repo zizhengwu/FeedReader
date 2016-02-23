@@ -17,8 +17,8 @@ namespace FeedReader
 {
     public class RootViewController : UIViewController
     {
-        private UITextField _urlField;
-        private UIButton _addButton;
+        private UIBarButtonItem _settingIcon;
+
         private UITableView _tableView;
 
         private List<RssFeed> _feeds;
@@ -34,6 +34,8 @@ namespace FeedReader
 
             Title = "Rss Feeds";
 
+            _settingIcon = new UIBarButtonItem(UIImage.FromFile("Images/Settings-500.png").MaxResizeImage(22, 22) , UIBarButtonItemStyle.Plain,  (sender, args) => {});
+
             View.BackgroundColor = UIColor.LightGray;
 
             _tableView = new UITableView()
@@ -43,6 +45,7 @@ namespace FeedReader
             };
 
             View.AddSubviews(_tableView);
+            this.NavigationItem.SetRightBarButtonItem(_settingIcon, true);
         }
 
     }

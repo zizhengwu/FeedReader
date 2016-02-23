@@ -87,6 +87,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AmazonUtils.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="LoadingOverlay.cs" />
     <Compile Include="Main.cs" />
@@ -156,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+    <BundleResource Include="Images\Settings-500.png" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\AWSSDK.CognitoIdentity.3.1.0.6\analyzers\dotnet\cs\AWSSDK.CognitoIdentity.CodeAnalysis.dll" />
