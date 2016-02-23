@@ -26,6 +26,18 @@ namespace FeedReader
         {
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            // already logged in
+            if (!String.IsNullOrEmpty(AccessToken.CurrentAccessToken.TokenString))
+            {
+                AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, AccessToken.CurrentAccessToken.TokenString);
+                this.DismissViewController(true, () => { });
+            }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -35,7 +47,7 @@ namespace FeedReader
                 LoginBehavior = LoginBehavior.Native,
                 ReadPermissions = readPermissions.ToArray()
             };
-
+            
             // Handle actions once the user is logged in
             loginButton.Completed += (sender, e) => {
                 if (e.Error != null)
@@ -51,9 +63,6 @@ namespace FeedReader
                 else
                 {
                     // Handle your successful login
-                    AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, e.Result.Token.TokenString);
-                    Console.WriteLine(e.Result.Token.TokenString);
-                    Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
                     this.DismissViewController(true, () => {});
                 }
             };
@@ -69,6 +78,7 @@ namespace FeedReader
             // Add views to main view
             View.AddSubview(loginButton);
             View.AddSubview(pictureView);
+
         }
 
         public override void DidReceiveMemoryWarning()
