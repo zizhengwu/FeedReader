@@ -32,6 +32,13 @@ namespace FeedReader
         {
             base.ViewDidLoad();
 
+            // handle login
+            if (!AppDelegate.IsUserLoggedIn)
+            {
+              var loginViewController = new LoginViewController();
+              this.NavigationController.PresentViewController(loginViewController, false, () => {});
+            }
+
             Title = "Rss Feeds";
 
             _settingIcon = new UIBarButtonItem(UIImage.FromFile("Images/Settings-500.png").MaxResizeImage(22, 22) , UIBarButtonItemStyle.Plain,  (sender, args) => {});
