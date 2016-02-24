@@ -89,6 +89,7 @@
     <Compile Include="AmazonUtils.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="FeedSync.cs" />
     <Compile Include="LoadingOverlay.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />

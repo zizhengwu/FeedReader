@@ -41,7 +41,13 @@ namespace FeedReader
 
             Title = "Rss Feeds";
 
-            _settingIcon = new UIBarButtonItem(UIImage.FromFile("Images/Settings-500.png").MaxResizeImage(22, 22) , UIBarButtonItemStyle.Plain,  (sender, args) => {});
+            _settingIcon = new UIBarButtonItem(UIImage.FromFile("Images/Settings-500.png").MaxResizeImage(22, 22) , UIBarButtonItemStyle.Plain,
+                async (sender, args) =>
+                {
+                    var feedSync = new FeedSync();
+                    await feedSync.AddNewFeedAsync("http://blog.xamarin.com/feed", _feeds);
+                    _tableView.ReloadData();
+                });
 
             View.BackgroundColor = UIColor.LightGray;
 
