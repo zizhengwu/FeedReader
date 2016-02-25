@@ -31,13 +31,16 @@ namespace FeedReader
             base.ViewWillAppear(animated);
 
             // already logged in
-            Console.WriteLine("facebook logged in {0}", !String.IsNullOrEmpty(AccessToken.CurrentAccessToken.TokenString));
-            if (!String.IsNullOrEmpty(AccessToken.CurrentAccessToken.TokenString))
+            try
             {
-                AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, AccessToken.CurrentAccessToken.TokenString);
-                Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
-                this.DismissViewController(true, () => { });
+                if (!String.IsNullOrEmpty(AccessToken.CurrentAccessToken.TokenString))
+                {
+                    AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, AccessToken.CurrentAccessToken.TokenString);
+                    Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
+                    this.DismissViewController(true, () => { });
+                }
             }
+            catch(NullReferenceException e) {}
         }
 
         public override void ViewDidLoad()
