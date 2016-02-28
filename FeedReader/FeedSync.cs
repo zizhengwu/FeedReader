@@ -42,7 +42,8 @@ namespace FeedReader
                                  Title = item.Element("title").Value,
                                  PubDate = DateTime.Parse(item.Element("pubDate").Value),
                                  Creator = item.Element(dc + "creator").Value,
-                                 Link = item.Element("link").Value
+                                 Link = item.Element("link").Value,
+                                 Description = item.Element("description").Value
                              }).ToList();
 
                 newFeed.Items.AddRange(items);

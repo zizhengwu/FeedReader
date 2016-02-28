@@ -30,7 +30,6 @@ namespace FeedReader
             Settings.DisplayName = Constants.appName;
 
             // handle login
-            AmazonUtils.ClearCredentials();
             IsUserLoggedIn = (!String.IsNullOrEmpty(AmazonUtils.Credentials.GetCachedIdentityId()));
 
             // create a new window instance based on the screen size
