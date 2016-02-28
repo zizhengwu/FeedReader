@@ -87,6 +87,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AmazonUtils.cs" />
+    <Compile Include="Css.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="RssFeedItemContentView.cs" />

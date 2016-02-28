@@ -21,9 +21,7 @@ namespace FeedReader
 
             _webView = new UIWebView(View.Bounds);
 
-            string head = "<!DOCTYPE html><html><body style=\"background - color:white; \">";
-            string tail = "</body></ html > ";
-            _webView.LoadHtmlString(head + _item.Description + tail, null);
+            _webView.LoadHtmlString(Css.head + Css.css + Css.title(_item.Link, _item.PubDate.ToShortDateString(), _item.Title, _item.Creator, "") + _item.Description + Css.tail, null);
             _webView.ScalesPageToFit = false;
 
             View.AddSubview(_webView);
