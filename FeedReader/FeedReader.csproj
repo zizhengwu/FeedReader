@@ -89,6 +89,7 @@
     <Compile Include="AmazonUtils.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="RssFeedItemContentView.cs" />
     <Compile Include="FeedSync.cs" />
     <Compile Include="LoadingOverlay.cs" />
     <Compile Include="Main.cs" />
@@ -97,7 +98,7 @@
     <Compile Include="RssFeed.cs" />
     <Compile Include="RssFeedCell.cs" />
     <Compile Include="RssFeedItemCell.cs" />
-    <Compile Include="rssFeedItemSource.cs" />
+    <Compile Include="RssFeedItemSource.cs" />
     <Compile Include="RssFeedItemTableViewController.cs" />
     <Compile Include="RssFeedSource.cs" />
     <Compile Include="RssItem.cs" />

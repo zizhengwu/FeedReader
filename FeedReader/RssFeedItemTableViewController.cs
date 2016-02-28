@@ -19,7 +19,7 @@ namespace FeedReader
             base.ViewDidLoad();
 
             Title = _feed.Title;
-            TableView.Source = new rssFeedItemSource(_feed.Items);
+            TableView.Source = new RssFeedItemSource(this, _feed.Items);
         }
     }
 }

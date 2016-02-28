@@ -5,12 +5,14 @@ using UIKit;
 
 namespace FeedReader
 {
-    internal class rssFeedItemSource : UITableViewSource
+    internal class RssFeedItemSource : UITableViewSource
     {
         private List<RssItem> _items;
+        UIViewController _parentController;
 
-        public rssFeedItemSource(List<RssItem> items)
+        public RssFeedItemSource(UIViewController parentController, List<RssItem> items)
         {
+            _parentController = parentController;
             _items = items;
         }
 
@@ -39,7 +41,10 @@ namespace FeedReader
             var item = _items[indexPath.Row];
 
             var url = new NSUrl(item.Link);
-            UIApplication.SharedApplication.OpenUrl(url);
+            //UIApplication.SharedApplication.OpenUrl(url);
+            var feedContentView = new RssFeedItemContentView(item.Description);
+            _parentController.NavigationController.PushViewController(feedContentView, true);
+
             tableView.DeselectRow(indexPath, false);
         }
     }
