@@ -8,11 +8,11 @@ namespace FeedReader
     public class RssFeedItemContentView : UIViewController
     {
         private UIWebView _webView;
-        private string _content;
+        private RssItem _item;
 
-        public RssFeedItemContentView(string content)
+        public RssFeedItemContentView(RssItem item)
         {
-            _content = content;
+            _item = item;
         }
 
         public override void ViewDidLoad()
@@ -23,7 +23,7 @@ namespace FeedReader
 
             string head = "<!DOCTYPE html><html><body style=\"background - color:white; \">";
             string tail = "</body></ html > ";
-            _webView.LoadHtmlString(head + _content + tail, null);
+            _webView.LoadHtmlString(head + _item.Description + tail, null);
             _webView.ScalesPageToFit = false;
 
             View.AddSubview(_webView);

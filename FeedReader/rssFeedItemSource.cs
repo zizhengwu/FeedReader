@@ -42,7 +42,7 @@ namespace FeedReader
 
             var url = new NSUrl(item.Link);
             //UIApplication.SharedApplication.OpenUrl(url);
-            var feedContentView = new RssFeedItemContentView(item.Description);
+            var feedContentView = new RssFeedItemContentView(item);
             _parentController.NavigationController.PushViewController(feedContentView, true);
 
             tableView.DeselectRow(indexPath, false);
