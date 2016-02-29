@@ -32,6 +32,10 @@ namespace FeedReader
         {
             base.ViewDidLoad();
 
+            NavigationController.NavigationBar.TintColor = UIColor.DarkGray;
+            NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+            NavigationItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
+
             // handle login
             if (!AppDelegate.IsUserLoggedIn)
             {

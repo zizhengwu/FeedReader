@@ -18,6 +18,8 @@ namespace FeedReader
         {
             base.ViewDidLoad();
 
+            NavigationItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
+
             Title = _feed.Title;
             TableView.Source = new RssFeedItemSource(this, _feed.Items);
         }
