@@ -35,8 +35,8 @@ namespace FeedReader
             {
                 if (!String.IsNullOrEmpty(AccessToken.CurrentAccessToken.TokenString))
                 {
-                    AmazonUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, AccessToken.CurrentAccessToken.TokenString);
-                    Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
+                    AwsUtils.Credentials.AddLogin(Constants.PROVIDER_NAME, AccessToken.CurrentAccessToken.TokenString);
+                    Console.WriteLine(AwsUtils.Credentials.GetIdentityId());
                     this.DismissViewController(true, () => { });
                 }
             }

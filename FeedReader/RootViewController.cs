@@ -44,7 +44,7 @@ namespace FeedReader
             }
             else
             {
-                Console.WriteLine(AmazonUtils.Credentials.GetIdentityId());
+                Console.WriteLine(AwsUtils.Credentials.GetIdentityId());
             }
 
             Title = "Rss Feeds";
@@ -53,7 +53,7 @@ namespace FeedReader
                 async (sender, args) =>
                 {
                     var feedSync = new FeedSync();
-                    await feedSync.AddNewFeedAsync("https://blog.xamarin.com/feed", _feeds);
+                    await feedSync.AddNewFeedAsync("http://www.engadget.com/rss-full.xml", _feeds);
                     _tableView.ReloadData();
                 });
 

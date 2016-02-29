@@ -7,7 +7,7 @@ using UIKit;
 
 namespace FeedReader
 {
-    public class AmazonUtils
+    public class AwsUtils
     {
         private static CognitoAWSCredentials _credentials;
 
