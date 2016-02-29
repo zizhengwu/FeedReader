@@ -12,10 +12,11 @@ using Amazon.CognitoIdentity;
 using Amazon.Util;
 using CoreGraphics;
 using UIKit;
+using AMScrollingNavbar;
 
 namespace FeedReader
 {
-    public class RootViewController : UIViewController
+    public partial class RootViewController : ScrollingNavigationViewController
     {
         private UIBarButtonItem _settingIcon;
 
@@ -33,7 +34,7 @@ namespace FeedReader
             base.ViewDidLoad();
 
             NavigationController.NavigationBar.TintColor = UIColor.DarkGray;
-            NavigationController.NavigationBar.BarTintColor = UIColor.LightGray;
+            NavigationController.NavigationBar.BarTintColor = UIColor.White;
             NavigationItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
 
             // handle login

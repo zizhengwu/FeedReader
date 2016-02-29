@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AMScrollingNavbar;
 using Foundation;
 using UIKit;
 
@@ -16,6 +17,15 @@ namespace FeedReader
             _item = item;
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            var scrolling = NavigationController as ScrollingNavigationController;
+
+            scrolling.FollowScrollView(_webView);
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -25,6 +35,7 @@ namespace FeedReader
 
             _webView.LoadHtmlString(Css.head + Css.css + Css.title(_item.Link, _item.PubDate.ToShortDateString(), _item.Title, _item.Creator, "") + _item.Description + Css.tail, null);
             _webView.ScalesPageToFit = false;
+            _webView.ScrollView.ShouldScrollToTop = ShouldScrollToTop;
 
             View.AddSubview(_webView);
         }
@@ -38,5 +49,17 @@ namespace FeedReader
             }
             return true;
         }
+
+        [Export("scrollViewShouldScrollToTop:")]
+        public bool ShouldScrollToTop(UIScrollView scrollView)
+        {
+            var scrolling = NavigationController as ScrollingNavigationController;
+            if (scrolling != null)
+            {
+                scrolling.ShowNavbar(true);
+            }
+            return true;
+        }
+
     }
 }

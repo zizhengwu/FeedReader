@@ -1,5 +1,6 @@
 ﻿using System;
 using Amazon;
+using AMScrollingNavbar;
 using Foundation;
 using UIKit;
 
@@ -38,7 +39,7 @@ namespace FeedReader
             // If you have defined a root view controller, set it here:
 
             var rootViewController = new RootViewController();
-            var navigationController = new UINavigationController(rootViewController);
+            var navigationController = new ScrollingNavigationController(rootViewController);
 
             Window.RootViewController = navigationController;
 
