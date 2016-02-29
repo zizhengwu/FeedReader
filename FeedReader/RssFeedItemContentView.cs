@@ -23,7 +23,7 @@ namespace FeedReader
 
             var scrolling = NavigationController as ScrollingNavigationController;
 
-            scrolling.FollowScrollView(_webView);
+            scrolling.FollowScrollView(_webView, 100);
         }
 
         public override void ViewDidLoad()
@@ -31,6 +31,7 @@ namespace FeedReader
             base.ViewDidLoad();
 
             _webView = new UIWebView(View.Bounds);
+            _webView.BackgroundColor = UIColor.White;
             _webView.ShouldStartLoad = HandleShouldStartLoad;
 
             _webView.LoadHtmlString(Css.head + Css.css + Css.title(_item.Link, _item.PubDate.ToShortDateString(), _item.Title, _item.Creator, "") + _item.Description + Css.tail, null);
@@ -38,6 +39,15 @@ namespace FeedReader
             _webView.ScrollView.ShouldScrollToTop = ShouldScrollToTop;
 
             View.AddSubview(_webView);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+
+            var scrolling = NavigationController as ScrollingNavigationController;
+
+            scrolling.ShowNavbar(true);
         }
 
         private bool HandleShouldStartLoad(UIWebView webView, NSUrlRequest request, UIWebViewNavigationType navType)

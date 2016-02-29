@@ -31,8 +31,30 @@ div.feature a {
 }
     
 div.feature:active {
-background-color: gray;
+    background-color: gray;
 }
+
+articleTitle {
+    text-align: center;
+    font-size: 200%;
+    font-weight: bold;
+    display: block;
+}
+
+titleCaption {
+    text-align: center;
+    font-size: 80%;
+    color: gray;
+    display: block;
+}
+
+a {
+    font-weight: bold; 
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+    color: black;
+}
+
 </style><body>
 ";
 
@@ -47,14 +69,10 @@ background-color: gray;
 @"
 <div class=""feature"">
     <a href=""{0}""></a>
-    <center>
-        <h3>
-        {1}
-        <h3>
-        <h1>{2}</h1>
-        <h3>{3}</h3>
-        <h3>{4}</h3>
-    </center>
+        <titleCaption>{1}</titleCaption>
+        <articleTitle>{2}</articleTitle>
+        <titleCaption>{3}</titleCaption>
+        <titleCaption>{4}</titleCaption>
 </div>
 ", link, time, title, author, feed);
         }
