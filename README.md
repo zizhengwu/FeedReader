@@ -6,4 +6,6 @@ The project was abandoned because:
 
 - The uncertainty of Xamarin being acquired by Microsoft when I was developing this app
 
-It is left here for storytelling.
+I turned to Swift later and the RSS reader is available here: https://github.com/zizhengwu/Lazer
+
+It is left here for storytelling. 
