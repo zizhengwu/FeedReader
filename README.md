@@ -2,7 +2,7 @@
 
 The project was abandoned because:
 
-- Few tutorials and open source projects available
+- Few tutorials and open source projects available regarding Xamarin
 
 - The uncertainty of Xamarin being acquired by Microsoft when I was developing this app
 
